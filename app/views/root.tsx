@@ -17,7 +17,7 @@ export default function Home (props: HomeProps) {
       <h2>A modern social network</h2>
 
       <p class='type-m'>
-        Your Facebook newsfeed from 2007 &mdash; rebuilt for iOS 17.
+        Your 2007-era news feed &mdash; rebuilt for iOS 17 and Android 14.
       </p>
 
       <ol>

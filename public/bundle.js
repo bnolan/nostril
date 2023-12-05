@@ -544,7 +544,7 @@
 
   // app/views/header.tsx
   function Header(props) {
-    return /* @__PURE__ */ o2("header", { children: /* @__PURE__ */ o2("div", { class: "logo", children: /* @__PURE__ */ o2("a", { href: "/", children: /* @__PURE__ */ o2("img", { src: "/nostril.webp" }) }) }) });
+    return /* @__PURE__ */ o2("header", { children: /* @__PURE__ */ o2("div", { class: "logo", children: /* @__PURE__ */ o2("a", { href: "/", children: /* @__PURE__ */ o2("img", { src: "/nostril-logo.jpg" }) }) }) });
   }
 
   // app/views/root.tsx
@@ -553,7 +553,7 @@
     return /* @__PURE__ */ o2("section", { children: [
       /* @__PURE__ */ o2(Header, {}),
       /* @__PURE__ */ o2("h2", { children: "A modern social network" }),
-      /* @__PURE__ */ o2("p", { class: "type-m", children: "Your Facebook newsfeed from 2007 \u2014 rebuilt for iOS 17." }),
+      /* @__PURE__ */ o2("p", { class: "type-m", children: "Your 2007-era news feed \u2014 rebuilt for iOS 17 and Android 14." }),
       /* @__PURE__ */ o2("ol", { children: [
         /* @__PURE__ */ o2("li", { children: [
           /* @__PURE__ */ o2("b", { children: "Human" }),

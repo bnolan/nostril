@@ -102,7 +102,7 @@ function page (component) {
         <script defer data-domain="nostril.com" src="https://plausible.io/js/script.js"></script>
         <link href='/theme.css' type='text/css' rel='stylesheet' />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="shortcut icon" href="/nostril.webp" />
+        <link rel="shortcut icon" href="/nostril-logo.jpg" />
         <title>nostril</title>
       </head>
       <body>
@@ -116,7 +116,7 @@ function page (component) {
 let routes = []
 
 app.get(['/', ...routes], async (req, res) => {
-  let results = await getFilters()
+  let results = []
   res.status(200).send(page(<Root path='/' filters={results} />))
 });
 

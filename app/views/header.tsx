@@ -9,7 +9,7 @@ export function Header (props: HeaderProps) {
     <header>
       <div class='logo'>
         <a href="/">
-          <img src="/nostril.webp" />
+          <img src="/nostril-logo.jpg" />
         </a>
       </div>
 
