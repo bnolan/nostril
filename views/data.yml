@@ -1,0 +1,28 @@
+title: nostril!
+author: Ben Nolan
+link: https://www.nostril.com
+repos:
+  - key: nostril
+    name: nostril
+    url: https://github.com/cryptovoxels/nostril
+    desc: The full application with all its dependencies and build scripts. Detailed README on how to build and run and profile it.
+  - key: gdnostril
+    name: GD nostril
+    url: https://github.com/cryptovoxels/gd_nostril
+    desc: Camera module as a Godot addon. Simplified sample app with only the unprocessed stereo image displayed on a 2D plane (works on the Quest or on PC).
+  - key: nostrilgodot
+    name: nostril Godot
+    url: https://github.com/cryptovoxels/nostril_godot
+    desc: The enhanced version of Godot Engine based on 3.5.
+  - key: prebuilts
+    name: nostril Prebuilts
+    url: https://github.com/cryptovoxels/nostril_prebuilts
+    desc: Includes the prebuilt libraries for the different external dependencies. Includes build scripts for each library.
+  - key: libjpegturbo
+    name: nostril Libjpeg-turbo
+    url: https://github.com/cryptovoxels/nostril_libjpeg-turbo
+    desc: Contains the sources for the modified libjpeg-turbo. Included as prebuilt library in the nostril_prebuilts repository.
+  - key: profiler
+    name: nostril Profiler
+    url: https://github.com/cryptovoxels/nostril_profiler
+    desc: Used only when nostril is built in profiler mode.

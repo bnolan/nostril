@@ -1,0 +1,9 @@
+node_modules
+.env
+tmp
+.DS_Store
+*.log
+_site
+test/fixtures/*_actual
+static
+test
