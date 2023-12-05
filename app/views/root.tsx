@@ -14,10 +14,10 @@ export default function Home (props: HomeProps) {
     <section>
       <Header />
 
-      <h2>A modern social network</h2>
+      <h2>A retro-modern social network</h2>
 
       <p class='type-m'>
-        Your 2007-era news feed &mdash; rebuilt for iOS 17 and Android 14.
+        Your 2007 era news feed &mdash; rebuilt for iOS 17 and Android 14.
       </p>
 
       <ol>

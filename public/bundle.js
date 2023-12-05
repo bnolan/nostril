@@ -552,8 +552,8 @@
     let filters = props.filters?.map((p4) => /* @__PURE__ */ o2("code", { children: JSON.stringify(p4) }));
     return /* @__PURE__ */ o2("section", { children: [
       /* @__PURE__ */ o2(Header, {}),
-      /* @__PURE__ */ o2("h2", { children: "A modern social network" }),
-      /* @__PURE__ */ o2("p", { class: "type-m", children: "Your 2007-era news feed \u2014 rebuilt for iOS 17 and Android 14." }),
+      /* @__PURE__ */ o2("h2", { children: "A retro-modern social network" }),
+      /* @__PURE__ */ o2("p", { class: "type-m", children: "Your 2007 era news feed \u2014 rebuilt for iOS 17 and Android 14." }),
       /* @__PURE__ */ o2("ol", { children: [
         /* @__PURE__ */ o2("li", { children: [
           /* @__PURE__ */ o2("b", { children: "Human" }),
