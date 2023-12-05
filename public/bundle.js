@@ -557,15 +557,15 @@
       /* @__PURE__ */ o2("ol", { children: [
         /* @__PURE__ */ o2("li", { children: [
           /* @__PURE__ */ o2("b", { children: "Human" }),
-          " Chronologically ordered, no algorithmic filtering or recommended content"
+          " Chronologically ordered, without algorithmic filtering or recommended content"
         ] }),
         /* @__PURE__ */ o2("li", { children: [
           /* @__PURE__ */ o2("b", { children: "Secure" }),
-          " Share family photos safely with end to end encryption"
+          " Share your posts securely with end to end encryption"
         ] }),
         /* @__PURE__ */ o2("li", { children: [
           /* @__PURE__ */ o2("b", { children: "Private" }),
-          " Your content is shared only with your friends"
+          " Your content is only viewable by your invited friends and family"
         ] })
       ] })
     ] });

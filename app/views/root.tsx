@@ -21,9 +21,9 @@ export default function Home (props: HomeProps) {
       </p>
 
       <ol>
-        <li><b>Human</b> Chronologically ordered, no algorithmic filtering or recommended content</li>
-        <li><b>Secure</b> Share family photos safely with end to end encryption</li>
-        <li><b>Private</b> Your content is shared only with your friends</li>
+        <li><b>Human</b> Chronologically ordered, without algorithmic filtering or recommended content</li>
+        <li><b>Secure</b> Share your posts securely with end to end encryption</li>
+        <li><b>Private</b> Your content is only viewable by your invited friends and family</li>
       </ol>
     </section>
   )
