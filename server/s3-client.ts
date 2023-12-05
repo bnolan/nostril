@@ -97,15 +97,15 @@ export const presign = async (filename: string, fileType: string) => {
   const params = {
     Bucket,
     Key,
-    ContentType: fileType,
-    ACL: 'public-read', 
+    ContentType: fileType
   }
 
-  let url = await getSignedUrl(s3Client, new PutObjectCommand(params), { expiresIn: 15 * 60 })
+  let uploadUrl = await getSignedUrl(s3Client, new PutObjectCommand(params), { expiresIn: 15 * 60 })
+  let viewUrl = await getSignedUrl(s3Client, new GetObjectCommand(params), { expiresIn: 7 * 24 * 3600 })
 
-  console.log(url)
+  // console.log(url)
 
-  return url
+  return { uploadUrl, viewUrl }
 }
 
 // Specifies a path within your Space and the file to download.

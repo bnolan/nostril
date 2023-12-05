@@ -121,8 +121,8 @@ app.get(['/', ...routes], async (req, res) => {
 });
 
 app.post('/api/presign', async (req, res) => {
-  let signedUrl = await presign(req.body.filename, req.body.filetype)
-  res.json({ signedUrl })
+  let { uploadUrl, viewUrl } = await presign(req.body.filename, req.body.filetype)
+  res.json({ uploadUrl, viewUrl })
 })
 
 app.use(express.static("public"))
