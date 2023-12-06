@@ -70,8 +70,6 @@ export default function Invite (props: InviteProps) {
     }
   }, []);
 
-  console.log('wtf')
-
   let options = means.map(c => <label><input type='radio' /> {c}</label>)
 
   return (

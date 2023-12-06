@@ -2553,7 +2553,6 @@
       } catch (e3) {
       }
     }, []);
-    console.log("wtf");
     let options = means.map((c4) => /* @__PURE__ */ o3("label", { children: [
       /* @__PURE__ */ o3("input", { type: "radio" }),
       " ",
