@@ -157,6 +157,7 @@ app.get(['/', ...routes], async (req, res) => {
 //   res.redirect('/')
 // })
 
+
 // todo - add auth
 app.post('/api/presign', async (req, res) => {
   let { uploadUrl, viewUrl } = await presign(req.body.filename, req.body.filetype)
