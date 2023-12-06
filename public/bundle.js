@@ -2495,7 +2495,7 @@
     return /* @__PURE__ */ o3("section", { children: [
       /* @__PURE__ */ o3(Header, {}),
       /* @__PURE__ */ o3("h2", { children: "A retro-modern social network" }),
-      /* @__PURE__ */ o3("p", { class: "type-m", children: "Your 2007-era news feed rebuilt for iOS 17 and Android 14." }),
+      /* @__PURE__ */ o3("p", { class: "type-m", children: "Your 2007 newsfeed rebuilt for iOS 17 and Android 14." }),
       /* @__PURE__ */ o3("ol", { children: [
         /* @__PURE__ */ o3("li", { children: [
           /* @__PURE__ */ o3("b", { children: "Human" }),
