@@ -111,7 +111,7 @@ async function auth (req: AuthenticatedRequest, res, next) {
 function page (component, payload?) {
   let prepend = ''
 
-  if (payload.invite) {
+  if (payload?.invite) {
     prepend = `<script type="application/json" id="invite">${JSON.stringify(payload?.invite)}</script>`
   }
 
@@ -173,8 +173,8 @@ app.post('/api/invite', auth, async (req, res) => {
 
 app.get('/invite/:code', async (req, res) => {
   let invite = await getInvite(req.params.code)
-  
-  res.status(200).send(page(<Invite path='/' invite={invite} />, { invite }))
+
+  res.status(200).send(page(<Invite path='/' />, { invite }))
 })
 
 app.use(express.static("public"))

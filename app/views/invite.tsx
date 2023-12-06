@@ -6,7 +6,6 @@ let Buffer = require("buffer").Buffer
 
 interface InviteProps {
   path: any
-  invite?: InviteRecord
 }
 
 interface InvitePayload {
@@ -51,8 +50,6 @@ async function decryptData(encryptedData, keyString) {
 let means = "Friends,Roommates,Colleagues,School,Hooked up,Online,Virtual events,Fitness,Hobby groups,I don't know them".split(',')
 
 export default function Invite (props: InviteProps) {
-  let invite = props.invite
-
   const [payload, setPayload] = useState({} as InvitePayload);
 
   const task = async () => {

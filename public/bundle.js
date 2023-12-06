@@ -2495,7 +2495,7 @@
     return /* @__PURE__ */ o3("section", { children: [
       /* @__PURE__ */ o3(Header, {}),
       /* @__PURE__ */ o3("h2", { children: "A retro-modern social network" }),
-      /* @__PURE__ */ o3("p", { class: "type-m", children: "Your 2007 era news feed \u2014 rebuilt for iOS 17 and Android 14." }),
+      /* @__PURE__ */ o3("p", { class: "type-m", children: "Your 2007-era news feed rebuilt for iOS 17 and Android 14." }),
       /* @__PURE__ */ o3("ol", { children: [
         /* @__PURE__ */ o3("li", { children: [
           /* @__PURE__ */ o3("b", { children: "Human" }),
@@ -2539,12 +2539,11 @@
   }
   var means = "Friends,Roommates,Colleagues,School,Hooked up,Online,Virtual events,Fitness,Hobby groups,I don't know them".split(",");
   function Invite(props) {
-    let invite = props.invite;
     const [payload, setPayload] = h2({});
     const task = async () => {
-      let invite2 = JSON.parse(document.querySelector("script#invite").innerHTML);
+      let invite = JSON.parse(document.querySelector("script#invite").innerHTML);
       let otp = window.location.hash.slice(1);
-      let decrypted = await decryptData(invite2.payload, otp);
+      let decrypted = await decryptData(invite.payload, otp);
       setPayload(JSON.parse(decrypted));
     };
     p2(() => {

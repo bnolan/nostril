@@ -77,8 +77,8 @@ do {
         if let encryptedBase64 = aesEncrypt(string: payload, keyString: key) {
           print("Encrypted Base64 String: \(encryptedBase64)")
 
-          // let url = URL(string: "https://www.nostril.com/api/presign")
-          let url = URL(string: "http://localhost:3000/api/invite")
+          let url = URL(string: "https://www.nostril.com/api/invite")
+          // let url = URL(string: "http://localhost:3000/api/invite")
 
           let json: [String: Any] = ["payload" : encryptedBase64, "pub": pub, "sig": sig]
           let jsonData = try? JSONSerialization.data(withJSONObject: json)
