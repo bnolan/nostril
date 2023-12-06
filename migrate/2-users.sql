@@ -1,4 +1,5 @@
 CREATE EXTENSION IF NOT EXISTS citext WITH SCHEMA public;
+CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;
 
 CREATE TABLE users(
    id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
