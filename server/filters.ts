@@ -1,12 +1,6 @@
 import { Pool } from 'pg'
 import { migrate } from "postgres-migrations"
-const { Configuration, OpenAIApi } = require("openai");
 const crypto = require('crypto');
-
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-const openai = new OpenAIApi(configuration);
 
 const connectionString = process.env.DATABASE_URL || "postgres://localhost/nostril-web"
 
