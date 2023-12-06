@@ -5,7 +5,7 @@ import * as express from "express"
 import * as fs from "fs"
 import { migrate } from "postgres-migrations"
 import * as pg from "pg"
-import { createFilter, getFilter, getFilters } from './filters'
+import { createOrGetUser, createInvite, getInvite } from './filters'
 import * as bodyParser from 'body-parser'
 import { render } from 'preact-render-to-string';
 import * as cookieParser from 'cookie-parser'
@@ -26,7 +26,7 @@ if (!nostril_AUTH_KEY) {
 }
 
 import Root from '../app/views/root'
-import Filter from '../app/views/filter'
+import Invite from '../app/views/invite'
 import NotFound from '../app/views/not-found'
 
 import { keys, presign } from './s3-client'
@@ -71,8 +71,8 @@ bodyParser.urlencoded({
 })
 
 type UserRecord = {
-  id: number
-  email: string
+  id: string
+  publicKey: string
 }
 
 export interface AuthenticatedRequest extends express.Request {
@@ -81,11 +81,25 @@ export interface AuthenticatedRequest extends express.Request {
   signedCookies: any
 }
 
-async function auth (req: AuthenticatedRequest, res, next) {
-  let string = req.signedCookies[COOKIE_NAME]
+async function isValid(key: string, sig: string) {
+  // let sig = "--not-implemented--"
+  return true
+}
 
-  if (string && string.email) {
-    req.user = string
+async function auth (req: AuthenticatedRequest, res, next) {
+  let publicKey = req.body.pub
+  let signature = req.body.sig
+
+  if (!await isValid(publicKey, signature)) {
+    res.status(401)
+    next(new Error('Not authorized'))
+    return
+  }
+
+  let id = await createOrGetUser(publicKey)
+
+  if (id) {
+    req.user = { id, publicKey }
 
     next()
   } else {
@@ -94,8 +108,14 @@ async function auth (req: AuthenticatedRequest, res, next) {
   }
 }
 
-function page (component) {
-  return render(
+function page (component, payload?) {
+  let prepend = ''
+
+  if (payload.invite) {
+    prepend = `<script type="application/json" id="invite">${JSON.stringify(payload?.invite)}</script>`
+  }
+
+  return prepend + render(
     <html>
       <head>
         <script src="/bundle.js" />
@@ -120,9 +140,41 @@ app.get(['/', ...routes], async (req, res) => {
   res.status(200).send(page(<Root path='/' filters={results} />))
 });
 
-app.post('/api/presign', async (req, res) => {
+// app.post('/api/authenticate', async (req, res) => {
+//   let email = req.body.email
+//   let token = req.body.token
+
+//   let uuid = 
+//   let id = 1
+//   let cookie = { email, id }
+
+//   if (!validCode(code, email)) {
+//     res.json({ success: false })
+//     return
+//   }
+
+//   res.cookie(COOKIE_NAME, cookie, { signed: true })
+//   res.redirect('/')
+// })
+
+app.post('/api/presign', auth, async (req, res) => {
   let { uploadUrl, viewUrl } = await presign(req.body.filename, req.body.filetype)
   res.json({ uploadUrl, viewUrl })
+})
+
+app.post('/api/invite', auth, async (req, res) => {
+  // let url = `https://www.nostril.com/invite/${code}?otp=${otp}`
+
+  let code = await createInvite(req.user.id, req.body.payload)
+
+
+  res.json({ code })
+})
+
+app.get('/invite/:code', async (req, res) => {
+  let invite = await getInvite(req.params.code)
+  
+  res.status(200).send(page(<Invite path='/' invite={invite} />, { invite }))
 })
 
 app.use(express.static("public"))

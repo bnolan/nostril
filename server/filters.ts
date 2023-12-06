@@ -1,6 +1,7 @@
 import { Pool } from 'pg'
 import { migrate } from "postgres-migrations"
 const { Configuration, OpenAIApi } = require("openai");
+const crypto = require('crypto');
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -29,6 +30,22 @@ export interface FilterRecord {
   content: object
 }
 
+export interface InviteRecord {
+  payload: string
+}
+
+export const createOrGetUser = async (publicKey: string) => {
+  await pool.query(`
+    insert into users(public_key) values ($1) on conflict (public_key) do nothing;
+  `, [publicKey])
+
+  let result = await pool.query(`
+    select id from users where public_key = $1;
+  `, [publicKey])
+
+  return result.rows[0].id as string;
+}
+
 export const getFilters = async () => {
   let result = await pool.query(`
     select ${fields} from filters;
@@ -36,20 +53,31 @@ export const getFilters = async () => {
   return result.rows as Array<FilterRecord>
 }
 
-export const getFilter = async (id: UUID) => {
+export const getInvite = async (code: string) => {
   let result = await pool.query(`
-    select ${fields} from filter where id=$1;
-  `, [id])
-  return result.rows[0] as FilterRecord
+    select payload from invites where code=$1 and expires_at > now();
+  `, [code])
+
+  return result.rows[0] as InviteRecord
 }
 
-export const createFilter = (userId: number, name: string) => {
-  return pool.query(`
+export const createInvite = async (userId: string, payload: string) => {
+  let length = 10
+
+  let code = crypto.randomBytes(256)
+        .toString('hex')
+        .slice(0, length);
+  
+  await pool.query(`
     INSERT INTO
-      filters (user_id, name, updated_at, created_at)
+      invites (sender_id, code, payload, created_at, expires_at)
     VALUES
-      ($1, $2, now(), now());
-  `, [userId, name])
+      ($1, $2, $3, now(), now() + interval '12 hours');
+  `, [userId, code, payload])
+
+  console.log(code)
+
+  return code
 }
 
 export const updateFilter = (user: Wallet, id: UUID, filter: FilterRecord) => {

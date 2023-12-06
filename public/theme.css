@@ -1,5 +1,5 @@
 body > section {
-  max-width: 40vw;
+  max-width: calc(max(40vw, 512px));
   margin: auto;
 }
 body {
@@ -60,4 +60,17 @@ ol li {
 }
 ol li b {
   display: block;
+}
+.invite fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  border: none;
+}
+.invite fieldset label {
+  display: block;
+  width: 33%;
+  padding-bottom: 1rem;
+}
+.invite button + button {
+  margin-left: 0.4rem;
 }
