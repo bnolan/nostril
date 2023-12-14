@@ -2499,7 +2499,7 @@
       /* @__PURE__ */ o3("ol", { children: [
         /* @__PURE__ */ o3("li", { children: [
           /* @__PURE__ */ o3("b", { children: "Human" }),
-          " Chronologically ordered, without algorithmic filtering or recommended content"
+          " Chronologically ordered, no algorithmic filtering or suggested content"
         ] }),
         /* @__PURE__ */ o3("li", { children: [
           /* @__PURE__ */ o3("b", { children: "Secure" }),
@@ -2508,6 +2508,10 @@
         /* @__PURE__ */ o3("li", { children: [
           /* @__PURE__ */ o3("b", { children: "Private" }),
           " Your content is only viewable by your invited friends and family"
+        ] }),
+        /* @__PURE__ */ o3("li", { children: [
+          /* @__PURE__ */ o3("b", { children: "Ad-free" }),
+          " Our service has no advertising or sponsored content"
         ] })
       ] })
     ] });
