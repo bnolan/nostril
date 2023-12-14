@@ -123,7 +123,7 @@ function page (component, payload?) {
         <link href='/theme.css' type='text/css' rel='stylesheet' />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="shortcut icon" href="/nostril-logo.jpg" />
-        <title>nostril</title>
+        <title>Nostril - Retro-modern social network</title>
       </head>
       <body>
         {component}
