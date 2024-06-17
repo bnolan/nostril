@@ -1,22 +1,24 @@
 import { GetObjectCommand, PutObjectCommand, S3 } from "@aws-sdk/client-s3";
 import { ListObjectsCommand } from "@aws-sdk/client-s3";
-import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
-export const Bucket = "nostril-ugc"
+export const Bucket = "nostril-ugc";
+
+let s3Client: S3 | null = null;
 
 if (!process.env.SPACES_SECRET) {
-  throw new Error('SPACES_SECRET env var not set')
+  console.error("SPACES_SECRET env var not set");
+} else {
+  s3Client = new S3({
+    endpoint: "https://syd1.digitaloceanspaces.com", // Find your endpoint in the control panel, under Settings. Prepend "https://".
+    forcePathStyle: false, // Configures to use subdomain/virtual calling format.
+    region: "syd1", // Must be "us-east-1" when creating new Spaces. Otherwise, use the region in your endpoint (e.g. nyc3).
+    credentials: {
+      accessKeyId: "DO00MCZW2CH67D9MV89F", // Access key pair. You can create access key pairs using the control panel or API.
+      secretAccessKey: process.env.SPACES_SECRET, // Secret access key defined through an environment variable.
+    },
+  });
 }
-
-const s3Client = new S3({
-  endpoint: "https://syd1.digitaloceanspaces.com", // Find your endpoint in the control panel, under Settings. Prepend "https://".
-  forcePathStyle: false, // Configures to use subdomain/virtual calling format.
-  region: "syd1", // Must be "us-east-1" when creating new Spaces. Otherwise, use the region in your endpoint (e.g. nyc3).
-  credentials: {
-    accessKeyId: "DO00MCZW2CH67D9MV89F", // Access key pair. You can create access key pairs using the control panel or API.
-    secretAccessKey: process.env.SPACES_SECRET // Secret access key defined through an environment variable.
-  }
-});
 
 export { s3Client, getSignedUrl };
 
@@ -24,9 +26,9 @@ export { s3Client, getSignedUrl };
 //   return `parcels/parcel-${parcel.id}/${parcel.hash}.glb`
 // }
 
-const keys = new Set()
+const keys = new Set();
 
-export { keys }
+export { keys };
 
 /*
 export const uploadParcel = async (parcel: Parcel, bytes: Uint8Array, Metadata) => {
@@ -60,7 +62,6 @@ export const uploadParcel = async (parcel: Parcel, bytes: Uint8Array, Metadata) 
 }
 */
 
-
 /*
 // Step 3: Define the parameters for the object you want to upload.
 const params = {
@@ -92,39 +93,44 @@ try {
 */
 
 export const presign = async (filename: string, fileType: string) => {
-  let Key = `uuid/${filename}` // parcelKey(parcel)
+  let Key = `uuid/${filename}`; // parcelKey(parcel)
 
   const params = {
     Bucket,
     Key,
-    ContentType: fileType
-  }
+    ContentType: fileType,
+  };
 
-  let uploadUrl = await getSignedUrl(s3Client, new PutObjectCommand(params), { expiresIn: 15 * 60 })
-  let viewUrl = await getSignedUrl(s3Client, new GetObjectCommand(params), { expiresIn: 7 * 24 * 3600 })
+  let uploadUrl = await getSignedUrl(s3Client, new PutObjectCommand(params), {
+    expiresIn: 15 * 60,
+  });
+  let viewUrl = await getSignedUrl(s3Client, new GetObjectCommand(params), {
+    expiresIn: 7 * 24 * 3600,
+  });
 
   // console.log(url)
 
-  return { uploadUrl, viewUrl }
-}
+  return { uploadUrl, viewUrl };
+};
 
 // Specifies a path within your Space and the file to download.
 export const getUrl = async () => {
-  let Key = 'boop' // parcelKey(parcel)
+  let Key = "boop"; // parcelKey(parcel)
 
   if (!keys.has(Key)) {
-    return null
+    return null;
   }
 
-  let bucketParams = { Bucket, Key }
+  let bucketParams = { Bucket, Key };
 
-  let url = await getSignedUrl(s3Client, new GetObjectCommand(bucketParams), { expiresIn: 15 * 60 })
+  let url = await getSignedUrl(s3Client, new GetObjectCommand(bucketParams), {
+    expiresIn: 15 * 60,
+  });
 
-  console.log(url)
+  console.log(url);
 
-  return url
-}
-
+  return url;
+};
 
 // Returns a list of objects in your specified path.
 export const run = async () => {
@@ -135,20 +141,21 @@ export const run = async () => {
     console.log("Success", data);
 
     if (data.Contents) {
-      data.Contents.forEach(key => {
-        keys.add(key.Key)
-        console.log(key.Key)
-      })
-
+      data.Contents.forEach((key) => {
+        keys.add(key.Key);
+        console.log(key.Key);
+      });
     } else {
-      console.log('no contents')
+      console.log("no contents");
       // ...
     }
-    
+
     return data;
   } catch (err) {
     console.log("Error", err);
   }
 };
 
-run();
+if (s3Client) {
+  run();
+}

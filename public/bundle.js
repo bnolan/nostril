@@ -2486,7 +2486,7 @@
 
   // app/views/header.tsx
   function Header(props) {
-    return /* @__PURE__ */ o3("header", { children: /* @__PURE__ */ o3("div", { class: "logo", children: /* @__PURE__ */ o3("a", { href: "/", children: /* @__PURE__ */ o3("img", { src: "/nostril-logo.jpg" }) }) }) });
+    return /* @__PURE__ */ o3("header", { children: /* @__PURE__ */ o3("div", { class: "logo", children: /* @__PURE__ */ o3("a", { href: "/", children: /* @__PURE__ */ o3("img", { src: "/n-logo.png" }) }) }) });
   }
 
   // app/views/root.tsx
@@ -2494,25 +2494,27 @@
     let filters = props.filters?.map((p4) => /* @__PURE__ */ o3("code", { children: JSON.stringify(p4) }));
     return /* @__PURE__ */ o3("section", { children: [
       /* @__PURE__ */ o3(Header, {}),
-      /* @__PURE__ */ o3("h2", { children: "A retro-modern social network" }),
-      /* @__PURE__ */ o3("p", { class: "type-m", children: "Your 2007 newsfeed rebuilt for iOS 17 and Android 14." }),
+      /* @__PURE__ */ o3("h2", { children: "The modern social network" }),
+      /* @__PURE__ */ o3("p", { class: "type-m", children: "Coming soon to iOS 17 and Android 14." }),
       /* @__PURE__ */ o3("ol", { children: [
         /* @__PURE__ */ o3("li", { children: [
           /* @__PURE__ */ o3("b", { children: "Human" }),
           " Chronologically ordered, no algorithmic filtering or suggested content"
         ] }),
         /* @__PURE__ */ o3("li", { children: [
-          /* @__PURE__ */ o3("b", { children: "Secure" }),
-          " Share your posts securely with end to end encryption"
-        ] }),
-        /* @__PURE__ */ o3("li", { children: [
-          /* @__PURE__ */ o3("b", { children: "Private" }),
-          " Your content is only viewable by your invited friends and family"
+          /* @__PURE__ */ o3("b", { children: "Addiction-free" }),
+          " Built to be used in 5-minute sessions"
         ] }),
         /* @__PURE__ */ o3("li", { children: [
           /* @__PURE__ */ o3("b", { children: "Ad-free" }),
-          " Our service has no advertising or sponsored content"
+          " Our service has no advertising or sponsored content."
         ] })
+      ] }),
+      /* @__PURE__ */ o3("p", { children: "We'll offer Pro accounts with HD storage and a cool namebadge once we hit 10,000 users. For now we have day jobs." }),
+      /* @__PURE__ */ o3("p", { children: [
+        "Built on the ",
+        /* @__PURE__ */ o3("a", { href: "https://nostr.com/", children: "Nostr" }),
+        " protocol."
       ] })
     ] });
   }
