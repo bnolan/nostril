@@ -36,6 +36,11 @@ export default function Home(props: HomeProps) {
       <p>
         Built on the <a href="https://nostr.com/">Nostr</a> protocol.
       </p>
+      <p>
+        <a href="https://testflight.apple.com/join/nL2SzwZX">
+          Available on TestFlight
+        </a>
+      </p>
     </section>
   );
 }

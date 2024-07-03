@@ -2515,7 +2515,8 @@
         "Built on the ",
         /* @__PURE__ */ o3("a", { href: "https://nostr.com/", children: "Nostr" }),
         " protocol."
-      ] })
+      ] }),
+      /* @__PURE__ */ o3("p", { children: /* @__PURE__ */ o3("a", { href: "https://testflight.apple.com/join/nL2SzwZX", children: "Available on TestFlight" }) })
     ] });
   }
 
