@@ -2495,7 +2495,7 @@
     return /* @__PURE__ */ o3("section", { children: [
       /* @__PURE__ */ o3(Header, {}),
       /* @__PURE__ */ o3("h2", { children: "The modern social network" }),
-      /* @__PURE__ */ o3("p", { class: "type-m", children: "Coming soon to iOS 17 and Android 14." }),
+      /* @__PURE__ */ o3("p", { class: "type-m", children: "Coming to iOS 17 and Android 14." }),
       /* @__PURE__ */ o3("ol", { children: [
         /* @__PURE__ */ o3("li", { children: [
           /* @__PURE__ */ o3("b", { children: "Human" }),
@@ -2510,7 +2510,7 @@
           " Our service has no advertising or sponsored content."
         ] })
       ] }),
-      /* @__PURE__ */ o3("p", { children: "We'll offer Pro accounts with HD storage and a cool namebadge once we hit 10,000 users. For now we have day jobs." }),
+      /* @__PURE__ */ o3("p", { children: "We'll offer Pro accounts with HD photos and a cool namebadge once we hit 1,000 users. For now we have day jobs." }),
       /* @__PURE__ */ o3("p", { children: [
         "Built on the ",
         /* @__PURE__ */ o3("a", { href: "https://nostr.com/", children: "Nostr" }),

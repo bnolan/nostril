@@ -16,7 +16,7 @@ export default function Home(props: HomeProps) {
     <section>
       <Header />
       <h2>The modern social network</h2>
-      <p class="type-m">Coming soon to iOS 17 and Android 14.</p>
+      <p class="type-m">Coming to iOS 17 and Android 14.</p>
       <ol>
         <li>
           <b>Human</b> Chronologically ordered, no algorithmic filtering or
@@ -30,8 +30,8 @@ export default function Home(props: HomeProps) {
         </li>
       </ol>
       <p>
-        We'll offer Pro accounts with HD storage and a cool namebadge once we
-        hit 10,000 users. For now we have day jobs.
+        We'll offer Pro accounts with HD photos and a cool namebadge once we hit
+        1,000 users. For now we have day jobs.
       </p>
       <p>
         Built on the <a href="https://nostr.com/">Nostr</a> protocol.
